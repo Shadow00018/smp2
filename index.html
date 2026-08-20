@@ -1,0 +1,2210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GCS SMP — Minecraft Survival</title>
+
+<meta name="description"
+content="GCS SMP — Join our Minecraft survival community and start your adventure.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    color:#f4fff5;
+    background:#030604;
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font-family:inherit;
+}
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root{
+
+    --green:#69ff78;
+    --green2:#23dc3d;
+
+    --dark:#030604;
+    --dark2:#071009;
+
+    --card:#0b150d;
+
+    --text:#f4fff5;
+
+    --muted:#8d9b91;
+
+    --discord:#5865f2;
+
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background{
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:-10;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(73,255,92,.20),
+            transparent 38%
+        ),
+
+        radial-gradient(
+            circle at 10% 70%,
+            rgba(20,140,35,.10),
+            transparent 30%
+        ),
+
+        #030604;
+}
+
+
+.grid{
+    position:fixed;
+    inset:0;
+
+    z-index:-9;
+
+    opacity:.055;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,.5) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.5) 1px,
+            transparent 1px
+        );
+
+    background-size:55px 55px;
+
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+    );
+}
+
+
+/* =========================
+   PARTICLES
+========================= */
+
+.particles span{
+
+    position:fixed;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 12px var(--green);
+
+    opacity:.3;
+
+    z-index:-5;
+
+    animation:
+        particleMove 9s linear infinite;
+}
+
+.particles span:nth-child(1){
+    left:8%;
+    top:80%;
+}
+
+.particles span:nth-child(2){
+    left:20%;
+    top:95%;
+    animation-delay:2s;
+}
+
+.particles span:nth-child(3){
+    left:38%;
+    top:75%;
+    animation-delay:4s;
+}
+
+.particles span:nth-child(4){
+    left:57%;
+    top:90%;
+    animation-delay:1s;
+}
+
+.particles span:nth-child(5){
+    left:72%;
+    top:70%;
+    animation-delay:3s;
+}
+
+.particles span:nth-child(6){
+    left:91%;
+    top:88%;
+    animation-delay:5s;
+}
+
+
+@keyframes particleMove{
+
+    from{
+        transform:translateY(0);
+        opacity:0;
+    }
+
+    25%{
+        opacity:.4;
+    }
+
+    to{
+        transform:translateY(-500px);
+        opacity:0;
+    }
+
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    height:74px;
+
+    z-index:1000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:
+        rgba(3,7,4,.72);
+
+    backdrop-filter:
+        blur(20px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.06);
+
+}
+
+
+.logo{
+
+    font-family:
+        "Press Start 2P";
+
+    font-size:14px;
+
+    letter-spacing:-1px;
+
+    text-shadow:
+        0 0 25px
+        rgba(105,255,120,.25);
+
+}
+
+
+.logo span{
+    color:var(--green);
+}
+
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+    list-style:none;
+
+}
+
+
+.nav-links a{
+
+    color:#aebbb1;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    transition:.25s;
+
+}
+
+
+.nav-links a:hover{
+    color:var(--green);
+}
+
+
+.nav-discord{
+
+    padding:11px 18px;
+
+    background:var(--discord);
+
+    border-radius:9px;
+
+    color:white!important;
+
+    box-shadow:
+        0 8px 25px
+        rgba(88,101,242,.22);
+
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:
+        130px
+        20px
+        90px;
+
+}
+
+
+.hero-content{
+    max-width:1000px;
+}
+
+
+/* ONLINE BADGE */
+
+.status-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:
+        9px
+        17px;
+
+    border-radius:50px;
+
+    background:
+        rgba(105,255,120,.055);
+
+    border:
+        1px solid
+        rgba(105,255,120,.2);
+
+    color:#a7ffaf;
+
+    font-size:10px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    margin-bottom:30px;
+
+}
+
+
+.status-dot{
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 15px var(--green);
+
+    animation:pulse 1.8s infinite;
+
+}
+
+
+@keyframes pulse{
+
+    0%,100%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    50%{
+        transform:scale(.65);
+        opacity:.5;
+    }
+
+}
+
+
+/* TITLE */
+
+.hero h1{
+
+    font-family:
+        "Press Start 2P";
+
+    font-size:
+        clamp(
+            40px,
+            8vw,
+            94px
+        );
+
+    line-height:1.3;
+
+    letter-spacing:-3px;
+
+    text-shadow:
+
+        6px 6px 0
+        #12631c,
+
+        0 0 70px
+        rgba(105,255,120,.17);
+
+}
+
+
+.hero h1 span{
+    color:var(--green);
+}
+
+
+.hero-subtitle{
+
+    font-size:
+        clamp(20px,3vw,30px);
+
+    font-weight:800;
+
+    margin-top:25px;
+
+}
+
+
+.hero-description{
+
+    max-width:700px;
+
+    margin:
+        18px auto 0;
+
+    color:var(--muted);
+
+    font-size:15px;
+
+    line-height:1.8;
+
+}
+
+
+/* BUTTONS */
+
+.hero-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:32px;
+
+}
+
+
+.button{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:9px;
+
+    padding:
+        15px
+        23px;
+
+    border-radius:11px;
+
+    font-size:13px;
+
+    font-weight:900;
+
+    border:none;
+
+    transition:.25s;
+
+}
+
+
+.button-green{
+
+    color:#031006;
+
+    background:
+        linear-gradient(
+            135deg,
+            #91ff9b,
+            var(--green2)
+        );
+
+    box-shadow:
+        0 12px 35px
+        rgba(105,255,120,.20);
+
+}
+
+
+.button-green:hover{
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 18px 50px
+        rgba(105,255,120,.35);
+
+}
+
+
+.button-dark{
+
+    color:white;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+}
+
+
+.button-dark:hover{
+
+    transform:
+        translateY(-4px);
+
+    background:
+        rgba(255,255,255,.08);
+
+}
+
+
+/* =========================
+   SERVER BAR
+========================= */
+
+.server-bar{
+
+    width:
+        min(1000px,90%);
+
+    margin:
+        -20px auto 0;
+
+    padding:25px 30px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(14,28,17,.95),
+            rgba(5,12,7,.95)
+        );
+
+    border:
+        1px solid
+        rgba(105,255,120,.13);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.4);
+
+}
+
+
+.server-item{
+
+    text-align:center;
+
+}
+
+
+.server-item small{
+
+    color:#69766d;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    font-weight:900;
+
+}
+
+
+.server-item strong{
+
+    display:block;
+
+    margin-top:8px;
+
+    font-size:14px;
+
+}
+
+
+.green-text{
+    color:var(--green);
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+    padding:110px 6%;
+}
+
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:55px;
+
+}
+
+
+.section-title small{
+
+    color:var(--green);
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    font-weight:900;
+
+}
+
+
+.section-title h2{
+
+    font-size:
+        clamp(32px,5vw,45px);
+
+    margin:
+        12px 0;
+
+}
+
+
+.section-title p{
+
+    color:var(--muted);
+
+    font-size:14px;
+
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.features{
+
+    max-width:1150px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+
+}
+
+
+.feature{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:31px;
+
+    min-height:220px;
+
+    border-radius:19px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #101c12,
+            #071008
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+
+    transition:.35s;
+
+}
+
+
+.feature::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:130px;
+    height:130px;
+
+    right:-60px;
+    bottom:-70px;
+
+    border-radius:50%;
+
+    background:
+        rgba(105,255,120,.08);
+
+    filter:blur(10px);
+
+}
+
+
+.feature:hover{
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(105,255,120,.28);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.45);
+
+}
+
+
+.feature-icon{
+
+    font-size:30px;
+
+    margin-bottom:20px;
+
+}
+
+
+.feature h3{
+
+    font-size:18px;
+
+    margin-bottom:10px;
+
+}
+
+
+.feature p{
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    line-height:1.75;
+
+}
+
+
+/* =========================
+   DISCORD
+========================= */
+
+.discord-section{
+
+    max-width:1050px;
+
+    margin:auto;
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:70px 35px;
+
+    text-align:center;
+
+    border-radius:28px;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(88,101,242,.28),
+            transparent 55%
+        ),
+
+        #0f1428;
+
+    border:
+        1px solid
+        rgba(88,101,242,.28);
+
+}
+
+
+.discord-section::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+    height:250px;
+
+    border-radius:50%;
+
+    left:-130px;
+    bottom:-160px;
+
+    background:
+        rgba(88,101,242,.18);
+
+    filter:blur(40px);
+
+}
+
+
+.discord-icon{
+
+    font-size:48px;
+
+    margin-bottom:15px;
+
+}
+
+
+.discord-section h2{
+
+    font-size:
+        clamp(30px,5vw,44px);
+
+    margin-bottom:15px;
+
+}
+
+
+.discord-section p{
+
+    max-width:650px;
+
+    margin:auto;
+
+    color:#9ca4ba;
+
+    font-size:14px;
+
+    line-height:1.8;
+
+}
+
+
+.discord-button{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:30px;
+
+    padding:
+        16px
+        27px;
+
+    border-radius:11px;
+
+    background:var(--discord);
+
+    color:white;
+
+    font-size:13px;
+
+    font-weight:900;
+
+    box-shadow:
+        0 15px 40px
+        rgba(88,101,242,.28);
+
+    transition:.25s;
+
+}
+
+
+.discord-button:hover{
+
+    transform:
+        translateY(-4px);
+
+    background:#6b76ff;
+
+}
+
+
+/* IP LOCK */
+
+.ip-lock{
+
+    max-width:760px;
+
+    margin:25px auto 0;
+
+    padding:28px;
+
+    text-align:center;
+
+    border-radius:17px;
+
+    background:#081009;
+
+    border:
+        1px solid
+        rgba(105,255,120,.12);
+
+}
+
+
+.ip-lock-icon{
+    font-size:31px;
+}
+
+
+.ip-lock h3{
+    margin:10px 0 7px;
+}
+
+
+.ip-lock p{
+
+    color:var(--muted);
+
+    font-size:13px;
+
+}
+
+
+/* =========================
+   STEPS
+========================= */
+
+.steps{
+
+    max-width:950px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+
+}
+
+
+.step{
+
+    text-align:center;
+
+    padding:32px 22px;
+
+    border-radius:17px;
+
+    background:
+        rgba(10,20,12,.85);
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+
+}
+
+
+.step-number{
+
+    width:42px;
+    height:42px;
+
+    margin:
+        0 auto 17px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        rgba(105,255,120,.1);
+
+    border:
+        1px solid
+        rgba(105,255,120,.25);
+
+    color:var(--green);
+
+    font-weight:900;
+
+}
+
+
+.step h3{
+    margin-bottom:8px;
+}
+
+
+.step p{
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    line-height:1.7;
+
+}
+
+
+/* =========================
+   RULES
+========================= */
+
+.rules{
+
+    max-width:850px;
+
+    margin:auto;
+
+}
+
+
+.rule{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:19px 21px;
+
+    margin-bottom:10px;
+
+    border-radius:12px;
+
+    background:
+        rgba(11,21,13,.9);
+
+    border:
+        1px solid
+        rgba(255,255,255,.055);
+
+    color:#c3cdc5;
+
+    font-size:13px;
+
+}
+
+
+.rule-number{
+
+    min-width:30px;
+
+    color:var(--green);
+
+    font-family:monospace;
+
+    font-weight:900;
+
+}
+
+
+/* =========================
+   FAQ
+========================= */
+
+.faq{
+
+    max-width:850px;
+
+    margin:auto;
+
+}
+
+
+.faq-item{
+
+    margin-bottom:10px;
+
+    border-radius:13px;
+
+    overflow:hidden;
+
+    background:
+        #0a130c;
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+
+}
+
+
+.faq-question{
+
+    width:100%;
+
+    padding:19px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    cursor:pointer;
+
+    border:none;
+
+    background:none;
+
+    color:white;
+
+    text-align:left;
+
+    font-size:14px;
+
+    font-weight:800;
+
+}
+
+
+.faq-question span{
+
+    color:var(--green);
+
+    font-size:20px;
+
+}
+
+
+.faq-answer{
+
+    display:none;
+
+    padding:
+        0 19px 20px;
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    line-height:1.7;
+
+}
+
+
+.faq-item.active .faq-answer{
+    display:block;
+}
+
+
+/* =========================
+   FINAL CTA
+========================= */
+
+.final-cta{
+
+    max-width:1000px;
+
+    margin:auto;
+
+    padding:75px 25px;
+
+    text-align:center;
+
+    border-radius:27px;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(105,255,120,.14),
+            transparent 60%
+        ),
+
+        #081009;
+
+    border:
+        1px solid
+        rgba(105,255,120,.14);
+
+}
+
+
+.final-cta h2{
+
+    font-size:
+        clamp(30px,5vw,45px);
+
+    margin-bottom:13px;
+
+}
+
+
+.final-cta p{
+
+    color:var(--muted);
+
+    font-size:14px;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    padding:40px 20px;
+
+    text-align:center;
+
+    color:#68756c;
+
+    font-size:11px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.06);
+
+}
+
+
+footer strong{
+    color:var(--green);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:850px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .navbar{
+        padding:0 5%;
+    }
+
+    .server-bar{
+        grid-template-columns:1fr;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    section{
+        padding:
+            85px 5%;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="background"></div>
+<div class="grid"></div>
+
+
+<div class="particles">
+
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+</div>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header class="navbar">
+
+    <a href="#" class="logo">
+        GCS <span>SMP</span>
+    </a>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="#home">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="#features">
+                Features
+            </a>
+        </li>
+
+        <li>
+            <a href="#discord">
+                Discord
+            </a>
+        </li>
+
+        <li>
+            <a href="#rules">
+                Rules
+            </a>
+        </li>
+
+    </ul>
+
+
+    <a
+        class="nav-discord"
+        href="https://discord.gg/PjAsYyMjUw"
+        target="_blank">
+
+        Join Discord
+
+    </a>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main id="home">
+
+<section class="hero">
+
+<div class="hero-content">
+
+
+    <div class="status-badge">
+
+        <span class="status-dot"></span>
+
+        GCS SMP • COMMUNITY ONLINE
+
+    </div>
+
+
+    <h1>
+
+        GCS <span>SMP</span>
+
+    </h1>
+
+
+    <div class="hero-subtitle">
+
+        Your World. Your Story. Your Legacy.
+
+    </div>
+
+
+    <p class="hero-description">
+
+        Enter a new Minecraft survival experience.
+        Build your empire, explore unknown lands,
+        make alliances and create your own story
+        with the GCS SMP community.
+
+    </p>
+
+
+    <div class="hero-buttons">
+
+        <a
+            href="#discord"
+            class="button button-green">
+
+            🔒 GET SERVER IP
+
+        </a>
+
+
+        <a
+            href="https://discord.gg/PjAsYyMjUw"
+            target="_blank"
+            class="button button-dark">
+
+            💬 JOIN DISCORD
+
+        </a>
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     SERVER BAR
+========================= -->
+
+<div class="server-bar">
+
+
+    <div class="server-item">
+
+        <small>SERVER STATUS</small>
+
+        <strong class="green-text">
+
+            🟢 ONLINE
+
+        </strong>
+
+    </div>
+
+
+    <div class="server-item">
+
+        <small>GAME MODE</small>
+
+        <strong>
+
+            🌎 SURVIVAL SMP
+
+        </strong>
+
+    </div>
+
+
+    <div class="server-item">
+
+        <small>SERVER IP</small>
+
+        <strong>
+
+            🔒 IN DISCORD
+
+        </strong>
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section id="features">
+
+
+<div class="section-title">
+
+    <small>
+        THE EXPERIENCE
+    </small>
+
+    <h2>
+        Built For Adventure
+    </h2>
+
+    <p>
+        Everything you need for an unforgettable SMP.
+    </p>
+
+</div>
+
+
+<div class="features">
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            🌍
+        </div>
+
+        <h3>
+            Open World
+        </h3>
+
+        <p>
+            Explore, mine, build and discover
+            new places across the world.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            ⚔️
+        </div>
+
+        <h3>
+            PvP & Wars
+        </h3>
+
+        <p>
+            Create alliances, defend your territory
+            and battle rival players.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            🏰
+        </div>
+
+        <h3>
+            Build Your Empire
+        </h3>
+
+        <p>
+            Start with nothing and build a
+            kingdom everyone remembers.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            💎
+        </div>
+
+        <h3>
+            Economy
+        </h3>
+
+        <p>
+            Trade items, create shops and
+            become one of the richest players.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            🏆
+        </div>
+
+        <h3>
+            Community Events
+        </h3>
+
+        <p>
+            Compete in events and prove
+            that you're the best.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            🔥
+        </div>
+
+        <h3>
+            Active Community
+        </h3>
+
+        <p>
+            Meet new players, make friends
+            and enjoy the adventure together.
+        </p>
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     HOW TO JOIN
+========================= -->
+
+<section>
+
+<div class="section-title">
+
+    <small>
+        GET STARTED
+    </small>
+
+    <h2>
+        How To Join
+    </h2>
+
+    <p>
+        Start playing GCS SMP in three simple steps.
+    </p>
+
+</div>
+
+
+<div class="steps">
+
+
+    <div class="step">
+
+        <div class="step-number">
+            01
+        </div>
+
+        <h3>
+            Join Discord
+        </h3>
+
+        <p>
+            Join our official GCS SMP
+            Discord community.
+        </p>
+
+    </div>
+
+
+    <div class="step">
+
+        <div class="step-number">
+            02
+        </div>
+
+        <h3>
+            Get The IP
+        </h3>
+
+        <p>
+            The Minecraft server IP is
+            available inside our Discord.
+        </p>
+
+    </div>
+
+
+    <div class="step">
+
+        <div class="step-number">
+            03
+        </div>
+
+        <h3>
+            Start Playing
+        </h3>
+
+        <p>
+            Open Minecraft, enter the IP
+            and start your adventure.
+        </p>
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     DISCORD
+========================= -->
+
+<section id="discord">
+
+
+<div class="discord-section">
+
+
+    <div class="discord-icon">
+        💬
+    </div>
+
+
+    <h2>
+        Join The GCS Community
+    </h2>
+
+
+    <p>
+
+        Want the Minecraft server IP?
+
+        Join our official Discord.
+        That's where you'll find the server IP,
+        announcements, events, updates and support.
+
+    </p>
+
+
+    <a
+        href="https://discord.gg/PjAsYyMjUw"
+        target="_blank"
+        class="discord-button">
+
+        💬 JOIN GCS SMP DISCORD
+
+    </a>
+
+
+</div>
+
+
+<div class="ip-lock">
+
+
+    <div class="ip-lock-icon">
+        🔒
+    </div>
+
+
+    <h3>
+        Server IP Locked
+    </h3>
+
+
+    <p>
+        The server IP is available inside
+        the official GCS SMP Discord.
+    </p>
+
+
+</div>
+
+
+</section>
+
+
+<!-- =========================
+     RULES
+========================= -->
+
+<section id="rules">
+
+
+<div class="section-title">
+
+    <small>
+        PLAY FAIR
+    </small>
+
+    <h2>
+        Server Rules
+    </h2>
+
+    <p>
+        Keep GCS SMP fun for everyone.
+    </p>
+
+</div>
+
+
+<div class="rules">
+
+
+    <div class="rule">
+
+        <div class="rule-number">
+            01
+        </div>
+
+        No hacks, cheats or unfair advantages.
+
+    </div>
+
+
+    <div class="rule">
+
+        <div class="rule-number">
+            02
+        </div>
+
+        Respect all players and staff.
+
+    </div>
+
+
+    <div class="rule">
+
+        <div class="rule-number">
+            03
+        </div>
+
+        No unnecessary griefing or stealing.
+
+    </div>
+
+
+    <div class="rule">
+
+        <div class="rule-number">
+            04
+        </div>
+
+        No spam, scams or unwanted advertising.
+
+    </div>
+
+
+    <div class="rule">
+
+        <div class="rule-number">
+            05
+        </div>
+
+        Follow staff instructions.
+
+    </div>
+
+
+    <div class="rule">
+
+        <div class="rule-number">
+            06
+        </div>
+
+        Most importantly — have fun!
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FAQ
+========================= -->
+
+<section>
+
+
+<div class="section-title">
+
+    <small>
+        QUESTIONS
+    </small>
+
+    <h2>
+        Frequently Asked
+    </h2>
+
+</div>
+
+
+<div class="faq">
+
+
+    <div class="faq-item">
+
+        <button
+            class="faq-question"
+            onclick="toggleFAQ(this)">
+
+            Where can I get the server IP?
+
+            <span>+</span>
+
+        </button>
+
+
+        <div class="faq-answer">
+
+            The GCS SMP server IP is available
+            inside our official Discord server.
+            Join the Discord using the button above.
+
+        </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <button
+            class="faq-question"
+            onclick="toggleFAQ(this)">
+
+            Is GCS SMP free to join?
+
+            <span>+</span>
+
+        </button>
+
+
+        <div class="faq-answer">
+
+            Join the official Discord for the
+            latest information about the server
+            and how to start playing.
+
+        </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <button
+            class="faq-question"
+            onclick="toggleFAQ(this)">
+
+            Where are announcements posted?
+
+            <span>+</span>
+
+        </button>
+
+
+        <div class="faq-answer">
+
+            All important GCS SMP announcements,
+            events and updates are posted in
+            our Discord community.
+
+        </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <button
+            class="faq-question"
+            onclick="toggleFAQ(this)">
+
+            How do I contact staff?
+
+            <span>+</span>
+
+        </button>
+
+
+        <div class="faq-answer">
+
+            Join the Discord and use the appropriate
+            support channel to contact the GCS SMP staff.
+
+        </div>
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FINAL CTA
+========================= -->
+
+<section>
+
+
+<div class="final-cta">
+
+
+    <h2>
+        Your Adventure Starts Here.
+    </h2>
+
+
+    <p>
+
+        Join GCS SMP and become part
+        of the community.
+
+    </p>
+
+
+    <a
+        href="https://discord.gg/PjAsYyMjUw"
+        target="_blank"
+        class="discord-button">
+
+        🚀 JOIN GCS SMP
+
+    </a>
+
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    © 2026
+    <strong>GCS SMP</strong>
+
+    <br><br>
+
+    Minecraft is a trademark of Mojang Studios.
+
+</footer>
+
+
+<script>
+
+/* =========================
+   FAQ
+========================= */
+
+function toggleFAQ(button){
+
+    const item =
+        button.parentElement;
+
+    const isActive =
+        item.classList.contains("active");
+
+
+    document
+        .querySelectorAll(".faq-item")
+        .forEach(el => {
+
+            el.classList.remove("active");
+
+            const span =
+                el.querySelector(".faq-question span");
+
+            span.textContent = "+";
+
+        });
+
+
+    if(!isActive){
+
+        item.classList.add("active");
+
+        button
+            .querySelector("span")
+            .textContent = "−";
+
+    }
+
+}
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const observer =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.style.opacity="1";
+
+                    entry.target.style.transform=
+                        "translateY(0)";
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold:.12
+        }
+
+    );
+
+
+document
+    .querySelectorAll(
+        ".feature,.step,.rule,.faq-item"
+    )
+    .forEach(element => {
+
+        element.style.opacity="0";
+
+        element.style.transform=
+            "translateY(25px)";
+
+        element.style.transition=
+            "opacity .6s ease, transform .6s ease";
+
+        observer.observe(element);
+
+    });
+
+</script>
+
+
+</body>
+</html>
